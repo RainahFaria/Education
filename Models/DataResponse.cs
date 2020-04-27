@@ -1,6 +1,6 @@
 namespace Education.Models
 {
-  public class DataResponse
+  public class DataResponse<T>
   {
     /// <summary>
     /// success or error
@@ -15,6 +15,6 @@ namespace Education.Models
     /// <summary>
     /// Data to be manipuled at client side
     /// </summary>
-    public object Data { get; set; }
+    public T Data { get; set; }
   }
 }

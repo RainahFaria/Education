@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Education.Data;
+using Education.Services;
 
 namespace EducationApp
 {
@@ -28,7 +29,8 @@ namespace EducationApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Education"));
-            services.AddScoped<DataContext, DataContext>();
+            services.AddScoped<ISchoolService, SchoolService>();  
+            services.AddScoped<IClassroomService, ClassroomService>(); 
             services.AddControllers();
         }
 
