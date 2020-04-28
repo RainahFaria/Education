@@ -1,5 +1,5 @@
 export class DataResponse {
-    Data: object;
-    Status: string;
-    Message: string;
+    data: object;
+    status: string;
+    message: string;
 }

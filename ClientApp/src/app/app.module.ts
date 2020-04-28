@@ -10,7 +10,7 @@ import { ClassroomService } from './services/classroom.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './Components/home/home.component';
 import { FormsModule } from '@angular/forms';
-
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,    
-    FormsModule
+    FormsModule,
+    // NgbModule
   ],
   providers: [
     SchoolService,

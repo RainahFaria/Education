@@ -11,7 +11,7 @@ namespace Education.Controllers
 
     public class ClassroomController : ControllerBase
     {
-               private readonly IClassroomService _service;
+		private readonly IClassroomService _service;
 
 		public ClassroomController(IClassroomService classroomService)
 		{
@@ -24,11 +24,6 @@ namespace Education.Controllers
 			return Ok(await _service.GetAllClassrooms());
 		}
 
-		[HttpGet("{id}")]
-		public async Task<IActionResult> GetSingle(int id)
-		{
-			return Ok(await _service.GetClassroomById(id));
-		}
 
 		[HttpPost]
         [Route("AddClassroom")]

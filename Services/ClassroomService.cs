@@ -25,21 +25,13 @@ namespace Education.Services
 			return dataResponse;
 		}
 
-		public async Task<DataResponse<Classroom>> GetClassroomById(int id)
-		{
-			DataResponse<Classroom> dataResponse = new DataResponse<Classroom>();
-			dataResponse.Data = _dBContext.Classrooms.Where(s => s.Id == id).FirstOrDefault();
-			dataResponse.Status = "success";
-
-			return dataResponse;
-		}
-
 		public async Task<DataResponse<List<Classroom>>> AddClassroom(Classroom newClassroom)
-		{
-			_dBContext.Classrooms.Add(newClassroom);
-			_dBContext.SaveChanges();
-
+		{			
 			DataResponse<List<Classroom>> dataResponse = new DataResponse<List<Classroom>>();
+
+			_dBContext.Classrooms.Add(newClassroom);
+			_dBContext.SaveChangesAsync();
+
 		    dataResponse.Data = _dBContext.Classrooms.ToList();
 			dataResponse.Status = "success";
 
@@ -52,7 +44,7 @@ namespace Education.Services
 			try
 			{
 				Classroom classroom = _dBContext.Classrooms.Where(c => c.Id == updatedClassroom.Id).FirstOrDefault();
-				classroom.Name = updatedClassroom.Name;
+				classroom.Room = updatedClassroom.Room;
 
 				_dBContext.Classrooms.Update(classroom);
 				_dBContext.SaveChanges(); 

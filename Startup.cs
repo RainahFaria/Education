@@ -29,14 +29,17 @@ namespace EducationApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Education"));
-            services.AddScoped<ISchoolService, SchoolService>();  
-            services.AddScoped<IClassroomService, ClassroomService>(); 
+            services.AddScoped<ISchoolService, SchoolService>();
+            services.AddScoped<IClassroomService, ClassroomService>();
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseAuthentication();        
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -45,6 +48,13 @@ namespace EducationApp
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            //.AllowCredentials()
+            );
 
             app.UseAuthorization();
 

@@ -25,15 +25,6 @@ namespace Education.Services
 			return dataResponse;
 		}
 
-		public async Task<DataResponse<School>> GetSchoolById(int id)
-		{
-			DataResponse<School> dataResponse = new DataResponse<School>();
-			dataResponse.Data = _dBContext.Schools.Where(s => s.Id == id).FirstOrDefault();
-			dataResponse.Status = "success";
-
-			return dataResponse;
-		}
-
 		public async Task<DataResponse<List<School>>> AddSchool(School newSchool)
 		{
 			_dBContext.Schools.Add(newSchool);

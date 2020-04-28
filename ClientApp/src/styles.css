@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.mt-100{
+    margin-top: 100px;
+}
+
+.m-20{
+    margin: 20px;
+}
+
+.top-20{
+    margin-top: 20px;
+}

@@ -1,8 +1,9 @@
 import { School } from './school';
 
 export class Classroom {
-    Name: string;
+    Room: string;
     Id: number;
-    StudentsLimit: number;
     School: School;
+    Subject: string;
+    TeachersName: string;
 }

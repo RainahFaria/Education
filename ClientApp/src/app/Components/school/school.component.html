@@ -1,30 +1,67 @@
-<div class="container">
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/school">Cadastro de Escolas<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/classroom">Cadastro de Turmas</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-    <div class="row">
-     
-        <div class="col-md-12">
-            <h4 class="mb-3">Cadastro Escola</h4>
-            <form class="" [formGroup]="schoolForm">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="Name">Nome da Escola</label>
-                        <input type="text" class="form-control" id="Name" formControlName="name" required>
-                        <div class="invalid-feedback" *ngIf="schoolForm.controls.name.hasError('required')">
-                            Campo Obrigatório.
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="addSchool()">Cadastrar</button>
-            </form>
+<div class="container mt-100">
+    <div [hidden]="submitted">
+      <h1>Cadastro de Escolas</h1>
+      <form #schoolForm="ngForm">
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name"
+                 required maxlength="80"
+                 [(ngModel)]="school.Name" name="name"
+                 #name="ngModel">
+          <div [hidden]="name.valid || name.pristine"
+               class="alert alert-danger">
+               *Campo Obrigatório         
+          </div>
         </div>
+
+        <div class="form-group">
+          <label for="director">Diretor</label>
+          <input type="text" class="form-control" id="director"
+                 required maxlength="80"
+                 [(ngModel)]="school.Director" name="director"
+                 #director="ngModel">
+          <div [hidden]="director.valid || director.pristine"
+               class="alert alert-danger">
+               *Campo Obrigatório         
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="state">Estado</label>
+          <input type="text" class="form-control" id="state"
+                 required maxlength="80"
+                 [(ngModel)]="school.State" name="state"
+                 #state="ngModel">
+          <div [hidden]="state.valid || state.pristine"
+               class="alert alert-danger">
+               *Campo Obrigatório         
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-success" (click)="addSchool()" [disabled]="!schoolForm.form.valid">Cadastrar</button>
+      </form>
     </div>
 
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">&copy; 2017-2018 Company Name</p>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Privacy</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-            <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-    </footer>
-</div>
+  </div>

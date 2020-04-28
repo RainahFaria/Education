@@ -10,34 +10,19 @@ import { DataResponse } from '../../models/dataResponse';
   styleUrls: ['./school.component.css']
 })
 export class SchoolComponent implements OnInit {
-  school: School;  
+  school = new School();  
+  submitted = false;
   schoolForm: FormGroup;
 
-  constructor(private schoolService: SchoolService,
-    private fb: FormBuilder) { }
+  constructor(private schoolService: SchoolService
+  ) { }
 
   ngOnInit() {
-    this.schoolForm = this.fb.group({
-      name: ['', Validators.required]
-    });
   }
 
-  getSchools(){
-
-    this.schoolService.getAllSchools().subscribe((response: DataResponse) => {
-
-    });
-
-  }
-
-  addSchool(){
-    if (this.schoolForm.invalid) {
-      return;
-      // const message = this.sharedService.getInstantKey('USER_MESSAGES.REQUIRED_FIELD_NULL');
-      // return this.sharedService.notification(message, 4000, MessageType.info);
-    }
+  addSchool() {
     this.schoolService.addSchool(this.school).subscribe((response: DataResponse) => {
-
+      console.log(response);
     });
 
   }
